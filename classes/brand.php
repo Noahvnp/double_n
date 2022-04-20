@@ -37,8 +37,8 @@
             }
         }
 
-        public function show_category(){
-            $query = "SELECT * FROM tbl_category ORDER BY catId DESC";
+        public function show_brand(){
+            $query = "SELECT * FROM tbl_brand ORDER BY brandId DESC";
             $result = $this->db->select($query);
 
             return $result;
