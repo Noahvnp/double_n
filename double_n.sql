@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 20, 2022 lúc 04:56 PM
+-- Thời gian đã tạo: Th4 21, 2022 lúc 12:12 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -46,6 +46,26 @@ INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adm
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_brand`
+--
+
+CREATE TABLE `tbl_brand` (
+  `brandId` int(11) NOT NULL,
+  `brandName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_brand`
+--
+
+INSERT INTO `tbl_brand` (`brandId`, `brandName`) VALUES
+(1, 'Apple'),
+(2, 'HP'),
+(3, 'Samsung');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_category`
 --
 
@@ -75,6 +95,12 @@ ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`adminId`);
 
 --
+-- Chỉ mục cho bảng `tbl_brand`
+--
+ALTER TABLE `tbl_brand`
+  ADD PRIMARY KEY (`brandId`);
+
+--
 -- Chỉ mục cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
@@ -91,10 +117,16 @@ ALTER TABLE `tbl_admin`
   MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT cho bảng `tbl_brand`
+--
+ALTER TABLE `tbl_brand`
+  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
