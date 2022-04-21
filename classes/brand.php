@@ -44,46 +44,48 @@
             return $result;
         }
 
-        public function update_category($catName, $catId){
-            $catName = $this->fm->validation($catName);
+        public function getbrandbyId($id){
+            $query = "SELECT * FROM tbl_brand WHERE brandId = '$id'";
+            $result = $this->db->select($query);
+            
+            return $result;
+        }
 
-            $catName = mysqli_real_escape_string($this->db->link, $catName);
-            $catId = mysqli_real_escape_string($this->db->link, $catId);
+        public function update_brand($brandName, $Id){
+            $brandName = $this->fm->validation($brandName);
 
-            if (empty($catName)) {
-                $msg = "<span class='error'>Category must not be empty!>";
+            $brandName = mysqli_real_escape_string($this->db->link, $brandName);
+            $Id = mysqli_real_escape_string($this->db->link, $Id);
+
+            if (empty($brandName)) {
+                $msg = "<span class='error'>Brand must not be empty!>";
                 return $msg;
             } else {
-                $query = "UPDATE tbl_category SET catName = '$catName' WHERE catId = '$catId'";
+                $query = "UPDATE tbl_brand SET brandName = '$brandName' WHERE brandId = '$Id'";
                 $result = $this->db->update($query);
 
                 if($result){
-                    $alert = "<span class='success'>Category updated successfully!</span>";
+                    $alert = "<span class='success'>Brand updated successfully!</span>";
                     return $alert;
                 } else {
-                    $alert = "<span class='error'>Category not updated!</span>";
+                    $alert = "<span class='error'>Brand not updated!</span>";
                     return $alert;
                 }
             }
         }
 
-        public function del_category($id){
-            $query = "DELETE FROM tbl_category WHERE catId = '$id'";
+        public function del_brand($id){
+            $query = "DELETE FROM tbl_brand WHERE brandId = '$id'";
             $result = $this->db->delete($query);
             if($result){
-                $alert = "<span class='success'>Category deleted successfully!</span>";
+                $alert = "<span class='success'>Brand deleted successfully!</span>";
                 return $alert;
             } else {
-                $alert = "<span class='error'>Category not deleted!</span>";
+                $alert = "<span class='error'>Brand not deleted!</span>";
                 return $alert;
             }
         }        
 
-        public function getcatbyId($id){
-            $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
-            $result = $this->db->select($query);
-            
-            return $result;
-        }
+       
     }
 ?>

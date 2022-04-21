@@ -2,39 +2,40 @@
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/brand.php';?>
 <?php
-    $brand = new brand();
+   
 
-    if(!isset($_GET['catid']) || $_GET['catid'] == NULL){
+    if(!isset($_GET['brandid']) || $_GET['brandid'] == NULL){
         echo "<script>window.location = 'catlist.php';</script>";
     } else {
-        $id = $_GET['catid'];
+        $id = $_GET['brandid'];
     }
+    $brand = new brand();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$catName = $_POST['catName'];
-		$updateCat = $cat->update_category($catName, $id);
+		$brandName = $_POST['brandName'];
+		$updateBrand = $brand->update_brand($brandName, $id);
 	}
 ?>
         <div class="grid_10">
             <div class="box round first grid">
-                <h2>Sửa danh mục</h2>
+                <h2>Sửa thương hiệu</h2>
                <div class="block copyblock"> 
                 <?php
-                    if(isset($updateCat)){
-                        echo $updateCat;
+                    if(isset($updateBrand)){
+                        echo $updateBrand;
                     }
                 ?>
                 <?php
-                    $get_cate_name = $cat->getcatbyId($id);
-                    if($get_cate_name){
-                        while($result = $get_cate_name->fetch_assoc()){
+                    $get_brand_name = $brand->getbrandbyId($id);
+                    if($get_brand_name){
+                        while($result = $get_brand_name->fetch_assoc()){
                 ?>
                     <form action="" method="post"> <!--action trống tự gửi cho chính nó, kèm theo id -->
                         <table class="form">					
                             <tr>
                                 <td>
-                                    <input type="text" name="catName" value="<?php echo $result['catName']?>" placeholder="Sửa danh mục sản phẩm..." class="medium" />
+                                    <input type="text" name="brandName" value="<?php echo $result['brandName']?>" placeholder="Sửa thương hiệu sản phẩm..." class="medium" />
                                 </td>
                             </tr>
                             <tr> 
