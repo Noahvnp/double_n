@@ -1,6 +1,7 @@
 <?php
-    include_once '../lib/database.php';
-    include_once '../helpers/format.php';
+   $filepath = realpath(dirname(__FILE__));
+   include_once ($filepath.'/../lib/database.php');
+   include_once ($filepath.'/../helpers/format.php');
 ?>
 
 <?php
@@ -148,5 +149,13 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function getproduct_featured() {
+            $query = "SELECT * FROM tbl_product WHERE type = '1' ORDER BY productId DESC LIMIT 4";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
+
+
 ?>
