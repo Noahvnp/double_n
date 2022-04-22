@@ -53,10 +53,9 @@
             }
         }
 
-        public function show_category(){
-            $query = "SELECT * FROM tbl_category ORDER BY catId DESC";
+        public function show_product(){
+            $query = "SELECT * FROM tbl_product ORDER BY productId DESC";
             $result = $this->db->select($query);
-
             return $result;
         }
 
@@ -95,10 +94,9 @@
             }
         }        
 
-        public function getcatbyId($id){
-            $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
+        public function getproductbyid($id){
+            $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
             $result = $this->db->select($query);
-            
             return $result;
         }
     }
