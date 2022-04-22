@@ -40,11 +40,11 @@
 					<td><?php echo $result['productName'] ?></td>
 					<td><?php echo $result['price'] ?></td>
 					<td><img src="uploads/<?php echo $result['image'];?>"  width="80"></td>
-					<td><?php echo $result['catId'] ?></td>
-					<td><?php echo $result['brandId'] ?></td>
+					<td><?php echo $result['catName'] ?></td>
+					<td><?php echo $result['brandName'] ?></td>
 					<td><?php echo $fm->textShorten($result['product_desc'], 40); ?></td>
 					<td><?php
-						if($result['type'] == 0){
+						if($result['type'] == 1){
 							echo "Featured";
 						}else{
 							echo "Non-Featured";

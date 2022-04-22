@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 21, 2022 lúc 12:12 AM
+-- Thời gian đã tạo: Th4 22, 2022 lúc 06:45 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -84,6 +84,33 @@ INSERT INTO `tbl_category` (`catId`, `catName`) VALUES
 (3, 'Accessories'),
 (4, 'Clothing &amp; Accessories');
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_product`
+--
+
+CREATE TABLE `tbl_product` (
+  `productId` int(11) NOT NULL,
+  `productName` tinytext NOT NULL,
+  `catId` int(11) NOT NULL,
+  `brandId` int(11) NOT NULL,
+  `product_desc` text NOT NULL,
+  `type` int(11) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_product`
+--
+
+INSERT INTO `tbl_product` (`productId`, `productName`, `catId`, `brandId`, `product_desc`, `type`, `price`, `image`) VALUES
+(1, 'Máy ảnh 1', 3, 3, '<p>&aacute;đ&aacute;aaaaaa</p>', 1, '15000000', '2e44946945.jpg'),
+(2, 'Laptop Dell', 2, 1, '<p>&aacute;kdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjaaaaaaaaaaaaaaaaaaaa</p>', 1, '20000000', 'f30a7eb962.jpg'),
+(3, 'Sản phẩm 12', 1, 3, '<p>sađsdsfsfsdf<img src=\"chrome-extension://cianljdimgjlpmjllcbahmpdnicglaap/logo/48.png\" alt=\"\" /></p>', 1, '10', '9482544f3d.jpg'),
+(4, 'Quạt Điện', 1, 3, '<p>Quạt si&ecirc;u nguu&nbsp;</p>\r\n<div class=\"ddict_btn\" style=\"top: 28px; left: 125px;\"><img src=\"chrome-extension://cianljdimgjlpmjllcbahmpdnicglaap/logo/48.png\" alt=\"\" /></div>', 1, '1200000', 'b4c489dcf7.jpg');
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -107,6 +134,12 @@ ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`catId`) USING BTREE;
 
 --
+-- Chỉ mục cho bảng `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD PRIMARY KEY (`productId`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -127,6 +160,12 @@ ALTER TABLE `tbl_brand`
 --
 ALTER TABLE `tbl_category`
   MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

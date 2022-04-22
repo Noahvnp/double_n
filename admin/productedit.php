@@ -8,12 +8,12 @@
 	$pd = new product();
 
     if(!isset($_GET['productid']) || $_GET['productid'] == NULL){
-        echo "<script>window.location = 'catlist.php';</script>";
+        echo "<script>window.location = 'productlist.php';</script>";
     } else {
         $id = $_GET['productid'];
     }
 
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['productid'])){
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
         $updateProduct = $pd->update_product($_POST,$_FILES,$id);
 	}
 ?>
@@ -144,7 +144,7 @@
                         <select id="select" name="type">
                             <option>Select Type</option>
                             <?php
-                                if($result_product['type'] == 0){
+                                if($result_product['type'] == 1){
                             ?>
                                 <option selected value="1">Featured</option>
                                 <option value="0">Non-Featured</option>
