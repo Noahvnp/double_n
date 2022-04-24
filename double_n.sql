@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 22, 2022 lúc 08:10 AM
+-- Thời gian đã tạo: Th4 24, 2022 lúc 07:24 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -66,6 +66,22 @@ INSERT INTO `tbl_brand` (`brandId`, `brandName`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_cart`
+--
+
+CREATE TABLE `tbl_cart` (
+  `cartId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `sId` varchar(255) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `price` varchar(200) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_category`
 --
 
@@ -106,10 +122,9 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`productId`, `productName`, `catId`, `brandId`, `product_desc`, `type`, `price`, `image`) VALUES
-(1, 'Máy ảnh 1', 3, 3, '<p>&aacute;đ&aacute;aaaaaa</p>', 1, '15000000', '2e44946945.jpg'),
 (2, 'Laptop Dell', 2, 1, '<p>&aacute;kdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjaaaaaaaaaaaaaaaaaaaa</p>', 1, '20000000', 'f30a7eb962.jpg'),
-(3, 'Sản phẩm 12', 1, 3, '<p>sađsdsfsfsdf<img src=\"chrome-extension://cianljdimgjlpmjllcbahmpdnicglaap/logo/48.png\" alt=\"\" /></p>', 0, '10', '9482544f3d.jpg'),
-(4, 'Quạt Điện', 1, 3, '<p>Quạt si&ecirc;u nguu&nbsp;</p>\r\n<div class=\"ddict_btn\" style=\"top: 28px; left: 125px;\"><img src=\"chrome-extension://cianljdimgjlpmjllcbahmpdnicglaap/logo/48.png\" alt=\"\" /></div>', 1, '1200000', 'b4c489dcf7.jpg');
+(4, 'Quạt Điện', 1, 3, '<p>Quạt si&ecirc;u nguu&nbsp;</p>\r\n<div class=\"ddict_btn\" style=\"top: 28px; left: 125px;\"><img src=\"chrome-extension://cianljdimgjlpmjllcbahmpdnicglaap/logo/48.png\" alt=\"\" /></div>', 1, '1200000', 'b4c489dcf7.jpg'),
+(5, 'Tủ lạnh ', 4, 3, '<p>Tủ lạnh&nbsp;Tủ lạnh&nbsp;Tủ lạnh&nbsp;Tủ lạnh&nbsp;Tủ lạnh&nbsp;Tủ lạnh&nbsp;Tủ lạnh&nbsp;</p>', 0, '123213123123', '0472d8e750.jpg');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -126,6 +141,12 @@ ALTER TABLE `tbl_admin`
 --
 ALTER TABLE `tbl_brand`
   ADD PRIMARY KEY (`brandId`);
+
+--
+-- Chỉ mục cho bảng `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  ADD PRIMARY KEY (`cartId`);
 
 --
 -- Chỉ mục cho bảng `tbl_category`
@@ -156,6 +177,12 @@ ALTER TABLE `tbl_brand`
   MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT cho bảng `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
@@ -165,7 +192,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

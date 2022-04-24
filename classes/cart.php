@@ -24,21 +24,23 @@
 
             $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
             $result = $this->db->select($query)->fetch_assoc();
-           
+
             $image = $result['image'];
             $price = $result['price'];
             $productName = $result['productName'];
 
-
+            
             $check_cart  = "SELECT * FROM tbl_cart WHERE productId = '$id'AND sId = '$sId'";
-            if($check_cart){
+            $result_check = $this->db->select($check_cart);
+            if($result_check){
                 $msg = "Product Already Added!";
                 return $msg;
             }else{
-            $query_insert = "INSERT INTO tbl_cart(productId,quantity,sId,image,price,productName ) VALUES('$id','$quantity','$sId','$image','$price','$productName')";
+                $query_insert = "INSERT INTO tbl_cart(productId,quantity,sId,image,price,productName )
+                                VALUES('$id','$quantity','$sId','$image','$price','$productName')";
                 $insert_cart = $this->db->insert($query_insert);
 
-                if($result){
+                if($insert_cart){
                    header('Location:cart.php');
                 } else {
                     header('Location:404.php');
@@ -53,6 +55,42 @@
             return $result;
         }
 
+        public function update_quantity_cart($quantity, $cartId){
+            $quantity = mysqli_real_escape_string($this->db->link, $quantity);
+            $cartId = mysqli_real_escape_string($this->db->link, $cartId);
 
+            $query = "UPDATE tbl_cart SET
+                        quantity = '$quantity'
+                        WHERE cartId = '$cartId'";
+            $result = $this->db->update($query);
+
+            if($result){
+                $msg = "<span class='success'>Product Quantity Updated successfully!</span>";
+                return $msg;
+            } else {
+                $msg = "<span class='error'>Product Quantity Not Updated!</span>";
+                return $msg;
+            }
+        }
+
+        public function del_product_cart($cartid){
+            $cartid = mysqli_real_escape_string($this->db->link, $cartid);
+            $query = "DELETE FROM tbl_cart WHERE cartId = '$cartid'";
+            $result = $this->db->delete($query);
+            
+            if($result){
+                header('Location:cart.php');
+            } else {
+                $msg = "<span class='error'>Product Not Deleted!</span>";
+                return $msg;
+            }
+        }
+
+        public function check_cart(){
+            $sId = session_id();
+            $query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
 ?>

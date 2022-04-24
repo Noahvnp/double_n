@@ -157,7 +157,7 @@
         }
 
         public function getproduct_new() {
-            $query = "SELECT * FROM tbl_product WHERE type = '1' ORDER BY productId DESC LIMIT 4";
+            $query = "SELECT * FROM tbl_product ORDER BY productId DESC LIMIT 4";
             $result = $this->db->select($query);
             return $result;
         }

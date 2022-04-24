@@ -23,7 +23,7 @@
 					 <a href="details.php"><img src="admin/uploads/<?php echo $result['image'];?>" /></a>
 					 <h2><?php echo $result['productName']; ?></h2>
 					 <p><?php echo $fm->textShorten($result['product_desc'], 50); ?></p>
-					 <p><span class="price"><?php echo $result['price']; ?></span></p>
+					 <p><span class="price"><?php echo $result['price']." "."VNĐ"; ?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result['productId'] ?>" class="details">Details</a></span></div>
 				</div>
 
@@ -50,7 +50,7 @@
 					 <a href="details.php"><img src="admin/uploads/<?php echo $result_new['image'];?>" /></a>
 					 <h2><?php echo $result_new['productName']; ?></h2>
 					 <p><?php echo $fm->textShorten($result_new['product_desc'], 50); ?></p>
-					 <p><span class="price"><?php echo $result_new['price']; ?></span></p>
+					 <p><span class="price"><?php echo $result_new['price']." "."VNĐ"; ?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result_new['productId'] ?>" class="details">Details</a></span></div>
 				</div>
 
